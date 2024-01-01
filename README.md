@@ -1,6 +1,8 @@
 cubehook
 
 cubehook is a simple Program that provides a command-line interface for interacting with Discord webhooks. With cubehook, you can easily perform actions such as renaming the webhook, sending messages, spamming messages, setting a custom avatar, and deleting the webhook.
+
+tutorial is on my [youtube channel](https://www.youtube.com/channel/UCg_82fRPz1peYZay3tJ9HsA)
 Features
 
     Rename the Discord webhook.
