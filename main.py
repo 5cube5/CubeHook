@@ -1,8 +1,8 @@
 import requests
 
-webhookUrl = input("Enter your webhook:")
-webhookName = "Hooked by cubehook lmao"
-webhookAvatar = "https://example.com/avatar.png"  # Default avatar URL
+webhook_url = input("Enter your webhook:")
+webhook_name = "Hooked by cubehook lmao"
+webhook_avatar = "https://example.com/avatar.png"  # Default avatar URL
 
 print("Hooked in")
 
@@ -18,25 +18,27 @@ while True:
     command = int(command)
 
     if command == 1:
-        webhookUrl = input("Type in the new name:")
-        payload = {'name': webhookUrl}
-        requests.patch(webhookUrl, json=payload)
+        new_name = input("Type in the new name:")
+        webhook_name = new_name  # Update the webhook_name
+        requests.patch(webhook_url, json={'name': new_name})
+        print("Webhook renamed successfully.")
     elif command == 2:
         message = input("Type in the message:")
-        payload = {'content': message, 'username': webhookName, 'avatar_url': webhookAvatar}
-        requests.post(webhookUrl, json=payload)
+        requests.post(webhook_url, json={'content': message, 'username': webhook_name, 'avatar_url': webhook_avatar})
+        print("Message sent successfully.")
     elif command == 3:
-        spamMessage = input("Type in the spam message:")
+        spam_message = input("Type in the spam message:")
         quantity = input("Spam for how many times? :")
-        for i in range(int(quantity)):
-            requests.post(webhookUrl, json={'content': spamMessage, 'username': webhookName, 'avatar_url': webhookAvatar})
+        for _ in range(int(quantity)):
+            requests.post(webhook_url, json={'content': spam_message, 'username': webhook_name, 'avatar_url': webhook_avatar})
+        print("Spam complete.")
     elif command == 4:
-        requests.delete(webhookUrl)
-        print("Command executed!")
+        requests.delete(webhook_url)
+        print("Webhook deleted successfully.")
         break  # Exit the loop
     elif command == 5:
-        newAvatar = input("Enter the URL of the new avatar:")
-        webhookAvatar = newAvatar
+        new_avatar = input("Enter the URL of the new avatar:")
+        webhook_avatar = new_avatar
         print("Avatar set successfully.")
     elif command == 6:
         print("Exiting the loop.")
