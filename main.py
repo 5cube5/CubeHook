@@ -19,7 +19,8 @@ while True:
 
     if command == 1:
         newName = input("Type in the new name:")
-        payload = {'name': newName}
+        webhookUrl = newName
+        payload = {'name': webhookUrl}
         requests.patch(webhookUrl, json=payload)
     elif command == 2:
         message = input("Type in the message:")
